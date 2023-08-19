@@ -131,14 +131,22 @@ input:checked + .slider:before {
 }
 
 /* Light theme styles */
-body, .sidebar, input, button {
+body, .sidebar, button {
   background-color: #ffffff;
+  color: #333333;
+}
+input {
+  background-color: #f2f2f2;
   color: #333333;
 }
 
 /* Dark theme styles */
-.dark body, .dark .sidebar, .dark input, .dark button {
+.dark body, .dark .sidebar, .dark .main, .dark button {
   background-color: #333333;
+  color: #ffffff;
+}
+.dark input {
+  background-color: #4a4a4a;
   color: #ffffff;
 }
 
