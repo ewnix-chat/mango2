@@ -1,22 +1,20 @@
 <template>
-  <div class="container" :class="{dark: isDark}">
+  <div class="app" :class="{ dark: isDarkTheme }">
     <div class="sidebar">
-      <h2>Login</h2>
-      <div class="login-inputs">
-        <input type="text" v-model="username" placeholder="Username" />
-        <input type="password" v-model="password" placeholder="Password" />
-      </div>
+      <input type="text" v-model="username" placeholder="Username" />
+      <input type="password" v-model="password" placeholder="Password" />
       <button @click="connect">Connect</button>
-      <div class="theme-switch">
-        <label class="switch">
-          <input type="checkbox" :checked="isDark" @change="toggleTheme" />
-          <span class="slider round"></span>
-        </label>
-      </div>
+      <label>
+        <input type="checkbox" v-model="isDarkTheme" @change="toggleTheme" />
+        Theme
+      </label>
     </div>
-    <div class="main"></div>
+    <div class="main">
+      <p>{{ connectionStatus }}</p>
+    </div>
   </div>
 </template>
+
 <script>
 import { ref } from "vue";
 import io from "socket.io-client";
@@ -27,7 +25,8 @@ export default {
     return {
       username: "",
       password: "",
-      isDarkTheme: true, // Default to dark theme
+      isDarkTheme: true,
+      connectionStatus: "",
     };
   },
   methods: {
@@ -43,11 +42,13 @@ export default {
 
       socket.on("connect", () => {
         console.log("Connected to the server");
+        this.connectionStatus = "Connected to the server";
         this.authenticate(socket);
       });
 
       socket.on("connect_error", (error) => {
         console.error("Connection error:", error);
+        this.connectionStatus = "Connection error: " + error;
       });
     },
     authenticate(socket) {
@@ -64,7 +65,6 @@ export default {
   },
 };
 </script>
-
 <style>
 body, html {
   margin: 0;
