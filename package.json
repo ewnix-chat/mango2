@@ -1,0 +1,18 @@
+{
+  "name": "mango2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:ewnix-chat/mango2.git",
+  "author": "Kevin Thompson <phlux@ewnix.net>",
+  "license": "MIT",
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.3.1",
+    "vite": "^4.4.9",
+    "vue": "^3.3.4"
+  },
+  "scripts": {
+  "dev": "vite",
+  "build": "vite build",
+  "serve": "vite preview"
+  }
+}
