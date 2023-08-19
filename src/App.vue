@@ -1,25 +1,14 @@
 <template>
   <div class="container">
     <div class="sidebar">
-      <h2>Channels</h2>
-      <ul>
-        <li v-for="channel in channels" :key="channel">#{{ channel }}</li>
-      </ul>
-    </div>
-    <div class="main">
-      <div class="header">
-        <h2>#general</h2>
-      </div>
-      <div class="chat">
-        <div class="message">User1: Hello, world!</div>
-        <div class="message">User2: Hi, User1!</div>
-      </div>
-      <div class="input">
+      <h2>Login</h2>
+      <div class="login-inputs">
         <input type="text" v-model="username" placeholder="Username" />
         <input type="password" v-model="password" placeholder="Password" />
-        <input type="text" placeholder="Type your message..." />
       </div>
+      <button @click="connect">Connect</button>
     </div>
+    <div class="main"></div>
   </div>
 </template>
 
@@ -28,16 +17,15 @@ export default {
   name: 'App',
   data() {
     return {
-      channels: [],
       username: '',
       password: ''
     };
   },
-  created() {
-    // Simulate joining channels
-    setTimeout(() => this.channels.push('general'), 1000);
-    setTimeout(() => this.channels.push('help'), 2000);
-    setTimeout(() => this.channels.push('random'), 3000);
+  methods: {
+    connect() {
+      console.log('Connect button clicked.');
+      // TODO: Add connection logic
+    }
   }
 }
 </script>
@@ -56,27 +44,18 @@ export default {
     width: 20%;
     padding: 20px;
     background-color: #353535;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .login-inputs {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
   }
   .main {
     width: 80%;
-    display: flex;
-    flex-direction: column;
-  }
-  .header {
-    padding: 20px;
-    background-color: #3a3a3a;
-  }
-  .chat {
-    flex: 1;
-    padding: 20px;
-    overflow-y: scroll;
-  }
-  .message {
-    margin-bottom: 10px;
-  }
-  .input {
-    padding: 20px;
-    background-color: #3a3a3a;
   }
   input {
     width: 100%;
@@ -84,6 +63,14 @@ export default {
     margin-bottom: 10px;
     border: none;
     border-radius: 4px;
+  }
+  button {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #4a4a4a;
+    color: #ffffff;
+    cursor: pointer;
   }
 </style>
 
