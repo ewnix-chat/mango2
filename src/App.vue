@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" :class="theme">
     <div class="sidebar">
       <h2>Login</h2>
       <div class="login-inputs">
@@ -7,6 +7,10 @@
         <input type="password" v-model="password" placeholder="Password" />
       </div>
       <button @click="connect">Connect</button>
+      <label class="switch">
+        <input type="checkbox" v-model="isDark" @change="toggleTheme" />
+        <span class="slider round"></span>
+      </label>
     </div>
     <div class="main"></div>
   </div>
@@ -18,13 +22,18 @@ export default {
   data() {
     return {
       username: '',
-      password: ''
+      password: '',
+      theme: 'dark',
+      isDark: true
     };
   },
   methods: {
     connect() {
       console.log('Connect button clicked.');
       // TODO: Add connection logic
+    },
+    toggleTheme() {
+      this.theme = this.isDark ? 'dark' : 'light';
     }
   }
 }
@@ -35,8 +44,6 @@ export default {
 
   body {
     font-family: 'Inter', sans-serif;
-    background-color: #f2f2f7;
-    color: #000000;
   }
   .container {
     display: flex;
@@ -45,7 +52,6 @@ export default {
   .sidebar {
     width: 20%;
     padding: 40px 20px;
-    background-color: #ffffff;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -68,21 +74,91 @@ export default {
     margin-bottom: 10px;
     border: none;
     border-radius: 12px;
-    background-color: #f2f2f7;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
   }
   button {
     padding: 15px 30px;
     border: none;
     border-radius: 12px;
-    background-color: #007aff;
     color: #ffffff;
     cursor: pointer;
     font-weight: 600;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
   }
-  .main {
-    width: 80%;
+
+  /* Dark Theme */
+  .dark {
+    background-color: #2c2c2c;
+    color: #ffffff;
+  }
+  .dark .sidebar {
+    background-color: #353535;
+  }
+  .dark input {
+    background-color: #3a3a3a;
+  }
+  .dark button {
+    background-color: #4a4a4a;
+  }
+
+  /* Light Theme */
+  .light {
+    background-color: #f2f2f7;
+    color: #000000;
+  }
+  .light .sidebar {
+    background-color: #ffffff;
+  }
+  .light input {
+    background-color: #f2f2f7;
+  }
+  .light button {
+    background-color: #007aff;
+  }
+
+  /* Toggle Switch */
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    margin-top: 15px;
+  }
+  .switch input {
+    display: none;
+  }
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+  }
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+  }
+  input:checked + .slider {
+    background-color: #007aff;
+  }
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+  .slider.round {
+    border-radius: 34px;
+  }
+  .slider.round:before {
+    border-radius: 50%;
   }
 </style>
 
