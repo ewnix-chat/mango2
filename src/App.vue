@@ -7,10 +7,13 @@
         <input type="password" v-model="password" placeholder="Password" />
       </div>
       <button @click="connect">Connect</button>
-      <label class="switch">
-        <input type="checkbox" v-model="isDark" @change="toggleTheme" />
-        <span class="slider round"></span>
-      </label>
+      <div class="theme-switch">
+        <span>Theme</span>
+        <label class="switch">
+          <input type="checkbox" v-model="isDark" @change="toggleTheme" />
+          <span class="slider round"></span>
+        </label>
+      </div>
     </div>
     <div class="main"></div>
   </div>
@@ -18,28 +21,33 @@
 
 <script>
 export default {
-  name: 'App',
   data() {
     return {
       username: '',
       password: '',
-      theme: 'dark',
-      isDark: true
+      isDark: true,
+      theme: 'dark'
     };
   },
   methods: {
     connect() {
-      console.log('Connect button clicked.');
-      // TODO: Add connection logic
+      // Connection logic will go here
     },
     toggleTheme() {
+      this.isDark = !this.isDark;
       this.theme = this.isDark ? 'dark' : 'light';
     }
   }
-}
+};
 </script>
 
 <style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+  }
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
 
   body {
@@ -61,69 +69,34 @@ export default {
   .login-inputs {
     display: flex;
     flex-direction: column;
-    margin-bottom: 20px;
-    width: 80%;
-  }
-  h2 {
-    font-weight: 600;
-    margin-bottom: 20px;
+    gap: 10px;
   }
   input {
-    width: 100%;
-    padding: 15px;
-    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 8px;
     border: none;
-    border-radius: 12px;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    outline: none;
   }
   button {
-    padding: 15px 30px;
+    margin-top: 20px;
+    padding: 10px 20px;
     border: none;
-    border-radius: 12px;
-    color: #ffffff;
+    border-radius: 8px;
     cursor: pointer;
-    font-weight: 600;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
-    margin-top: 10px;
   }
-
-  /* Dark Theme */
-  .dark {
-    background-color: #2c2c2c;
-    color: #ffffff;
+  .theme-switch {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
   }
-  .dark .sidebar {
-    background-color: #353535;
+  .theme-switch span {
+    margin-right: 10px;
   }
-  .dark input {
-    background-color: #3a3a3a;
-  }
-  .dark button {
-    background-color: #4a4a4a;
-  }
-
-  /* Light Theme */
-  .light {
-    background-color: #f2f2f7;
-    color: #000000;
-  }
-  .light .sidebar {
-    background-color: #ffffff;
-  }
-  .light input {
-    background-color: #f2f2f7;
-  }
-  .light button {
-    background-color: #007aff;
-  }
-
-  /* Toggle Switch */
   .switch {
     position: relative;
     display: inline-block;
     width: 60px;
     height: 34px;
-    margin-top: 15px;
   }
   .switch input {
     display: none;
@@ -136,7 +109,7 @@ export default {
     right: 0;
     bottom: 0;
     background-color: #ccc;
-    transition: 0.4s;
+    transition: .4s;
   }
   .slider:before {
     position: absolute;
@@ -146,10 +119,10 @@ export default {
     left: 4px;
     bottom: 4px;
     background-color: white;
-    transition: 0.4s;
+    transition: .4s;
   }
   input:checked + .slider {
-    background-color: #007aff;
+    background-color: #2196F3;
   }
   input:checked + .slider:before {
     transform: translateX(26px);
@@ -159,6 +132,23 @@ export default {
   }
   .slider.round:before {
     border-radius: 50%;
+  }
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+      align-items: center;
+    }
+    .sidebar {
+      width: 100%;
+      padding: 20px 10px;
+      box-sizing: border-box;
+    }
+    .login-inputs {
+      width: 90%;
+    }
+    .theme-switch {
+      justify-content: center;
+    }
   }
 </style>
 
