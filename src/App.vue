@@ -141,13 +141,25 @@ input {
 }
 
 /* Dark theme styles */
-.dark body, .dark .sidebar, .dark .main, .dark button {
+.dark body, .dark .sidebar, .dark button {
   background-color: #333333;
   color: #ffffff;
 }
 .dark input {
   background-color: #4a4a4a;
   color: #ffffff;
+}
+
+/* Set defaults for .main class */
+
+.main {
+  width: 100%;
+  height: 100vh;
+  background-color: #ffffff;
+}
+
+.dark .main {
+  background-color: #333333;
 }
 
 @media (max-width: 768px) {
