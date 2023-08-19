@@ -1,5 +1,5 @@
 <template>
-  <div class="container" :class="theme">
+  <div class="container" :class="{dark: isDark}">
     <div class="sidebar">
       <h2>Login</h2>
       <div class="login-inputs">
@@ -9,7 +9,7 @@
       <button @click="connect">Connect</button>
       <div class="theme-switch">
         <label class="switch">
-          <input type="checkbox" v-model="isDark" @change="toggleTheme" />
+          <input type="checkbox" :checked="isDark" @change="toggleTheme" />
           <span class="slider round"></span>
         </label>
       </div>
