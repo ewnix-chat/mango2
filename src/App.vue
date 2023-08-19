@@ -55,13 +55,24 @@ body {
 }
 .sidebar {
   width: 20%;
-  padding: 40px 20px;
+  height: 100vh;
+  padding: 1em;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 12px;
 }
+
+/* For mobile devices */
+@media screen and (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    padding: 0;
+    align-items: center;
+  }
+}
+
 .login-inputs {
   display: flex;
   flex-direction: column;
