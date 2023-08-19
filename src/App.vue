@@ -19,20 +19,47 @@
 </template>
 
 <script>
+import { ref } from "vue";
+import io from "socket.io-client";
+
 export default {
+  name: "App",
   data() {
     return {
-      username: '',
-      password: '',
-      isDark: true,
+      username: "",
+      password: "",
+      isDarkTheme: true,
     };
   },
   methods: {
     connect() {
-      // Connection logic will go here
+      const socket = io("wss://irc.ewnix.net:8097", {
+        // Add any necessary socket.io options here
+        transports: ["websocket"],
+        secure: true,
+      });
+
+      // Handle connection event
+      socket.on("connect", () => {
+        console.log("Connected to the server");
+        this.authenticate(socket);
+      });
+
+      // Handle connection error
+      socket.on("connect_error", (error) => {
+        console.error("Connection error:", error);
+      });
     },
-    toggleTheme() {
-      this.isDark = !this.isDark;
+    authenticate(socket) {
+      // Handle SASL authentication here
+      const authPayload = {
+        // Add necessary data for SASL authentication
+        username: this.username,
+        password: this.password,
+      };
+
+      // Send authentication data to the server
+      socket.emit("sasl-auth", authPayload);
     },
   },
 };
