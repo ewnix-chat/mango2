@@ -8,7 +8,6 @@
       </div>
       <button @click="connect">Connect</button>
       <div class="theme-switch">
-        <span>Theme</span>
         <label class="switch">
           <input type="checkbox" v-model="isDark" @change="toggleTheme" />
           <span class="slider round"></span>
