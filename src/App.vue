@@ -4,18 +4,17 @@
       <input type="text" v-model="username" placeholder="Username" />
       <input type="password" v-model="password" placeholder="Password" />
       <button @click="connect">Connect</button>
-      <label>
-        <input type="checkbox" v-model="isDarkTheme" @change="toggleTheme" />
-        Theme
+      <label class="theme-switch">
+        <input type="range" min="0" max="1" step="1" v-model="isDarkTheme" @input="toggleTheme" />
       </label>
     </div>
     <div class="main">
       <p>{{ connectionStatus }}</p>
+      <!-- ... other content ... -->
     </div>
   </div>
 </template>
 
-<script>
 import { ref } from "vue";
 import io from "socket.io-client";
 
