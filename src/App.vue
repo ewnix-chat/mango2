@@ -3,9 +3,7 @@
     <div class="sidebar">
       <h2>Channels</h2>
       <ul>
-        <li>#general</li>
-        <li>#help</li>
-        <li>#random</li>
+        <li v-for="channel in channels" :key="channel">#{{ channel }}</li>
       </ul>
     </div>
     <div class="main">
@@ -17,7 +15,9 @@
         <div class="message">User2: Hi, User1!</div>
       </div>
       <div class="input">
-        <input type="text" placeholder="Type your message..."/>
+        <input type="text" v-model="username" placeholder="Username" />
+        <input type="password" v-model="password" placeholder="Password" />
+        <input type="text" placeholder="Type your message..." />
       </div>
     </div>
   </div>
@@ -27,7 +27,17 @@
 export default {
   name: 'App',
   data() {
-    return {};
+    return {
+      channels: [],
+      username: '',
+      password: ''
+    };
+  },
+  created() {
+    // Simulate joining channels
+    setTimeout(() => this.channels.push('general'), 1000);
+    setTimeout(() => this.channels.push('help'), 2000);
+    setTimeout(() => this.channels.push('random'), 3000);
   }
 }
 </script>
@@ -71,6 +81,7 @@ export default {
   input {
     width: 100%;
     padding: 10px;
+    margin-bottom: 10px;
     border: none;
     border-radius: 4px;
   }
