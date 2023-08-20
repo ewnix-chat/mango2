@@ -180,6 +180,7 @@ export default {
       flex-direction: column;
       align-items: center;
       height: 100vh;
+      width: 100%;
       border: none;
       padding: 0;
       margin: 0;
