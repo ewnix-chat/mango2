@@ -87,7 +87,7 @@ export default {
   }
 
 /* Light theme styles */
-  body, .sidebar, {
+  body, .sidebar {
     background-color: #ffffff;
     color: #333333;
   }
@@ -98,7 +98,7 @@ export default {
   }
 
 /* Dark theme styles */
-  .dark body, .dark .sidebar, {
+  .dark body, .dark .sidebar {
     background-color: #333333;
     color: #ffffff;
   }
