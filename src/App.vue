@@ -35,6 +35,7 @@ export default {
       // TODO: Add connection logic
     },
     toggleTheme() {
+      this.isDark = !this.isDark;
       this.theme = this.isDark ? 'dark' : 'light';
     }
   }
