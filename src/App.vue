@@ -55,12 +55,20 @@ body, html {
   font-family: 'Inter', sans-serif;
   width: 100%;
   height: 100%;
+  background-color: #ffffff;
+  color: #333333;
+}
+
+.dark {
+  background-color: #333333;
+  color: #ffffff;
 }
 
 .container {
   display: flex;
   height: 100vh;
   overflow: hidden;
+  width: 100%;
 }
 
 .sidebar {
@@ -110,32 +118,6 @@ button {
   background-color: #ffffff;
   width: 80%;
   height: 100vh;
-}
-
-/* Light theme styles */
-body, .sidebar {
-  background-color: #ffffff;
-  color: #333333;
-}
-
-input {
-  background-color: #f2f2f2;
-  color: #333333;
-}
-
-/* Dark theme styles */
-.dark body, .dark .sidebar {
-  background-color: #333333;
-  color: #ffffff;
-}
-
-.dark input {
-  background-color: #4a4a4a;
-  color: #ffffff;
-}
-
-.dark .main {
-  background-color: #333333;
 }
 
 /* Toggle Switch */
@@ -214,5 +196,16 @@ input:checked + .slider:before {
   .theme-switch {
     justify-content: center;
   }
+}
+
+/* Dark theme styles */
+.dark body, .dark .container, .dark .sidebar, .dark .main {
+  background-color: #333333;
+  color: #ffffff;
+}
+
+.dark input {
+  background-color: #4a4a4a;
+  color: #ffffff;
 }
 </style>
