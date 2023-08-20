@@ -100,6 +100,7 @@ input {
   border: none;
   border-radius: 12px;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  background-color: #f2f2f2;
 }
 
 button {
