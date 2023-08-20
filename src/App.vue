@@ -13,6 +13,7 @@
         <span class="slider round"></span>
       </label>
     </div>
+    </div>
     <div class="main"></div>
   </div>
 </template>
