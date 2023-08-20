@@ -179,15 +179,20 @@ export default {
     .container {
       flex-direction: column;
       align-items: center;
+      height: 100vh;
       border: none;
       padding: 0;
       margin: 0;
     }
     .sidebar {
       width: 100%;
+      height: 100vh;
       padding: 0;
       align-items: center;
       border: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
     .login-inputs {
       width: 90%;
